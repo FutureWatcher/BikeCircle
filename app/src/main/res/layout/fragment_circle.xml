@@ -191,8 +191,12 @@
 
             </android.support.constraint.ConstraintLayout>
 
-            <include layout="@layout/hot_action"></include>
-
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/action_one">
+                    <include layout="@layout/hot_action"></include>
+            </FrameLayout>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="3dp"

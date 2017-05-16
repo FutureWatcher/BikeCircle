@@ -61,6 +61,7 @@
         android:layout_marginBottom="35dp">
 
         <TextView
+            android:id="@+id/start"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:layout_gravity="left|center"
@@ -70,6 +71,7 @@
             android:textColor="@color/colorWhite" />
 
         <TextView
+            android:id="@+id/end"
             android:layout_width="96dp"
             android:layout_height="35dp"
             android:layout_gravity="right|center"
@@ -99,6 +101,7 @@
 
 
     <Button
+        android:id="@+id/funciton_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"

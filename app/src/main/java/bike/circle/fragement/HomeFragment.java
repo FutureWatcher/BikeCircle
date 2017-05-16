@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import bike.circle.activities.PubActionActivity;
 import bike.circle.activities.RankActivity;
 import bike.circle.activities.StartActionActivity;
 import bike.circle.request.BaseRequest;
@@ -118,6 +120,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         bannerAdapter = new BannerAdapter(bannerImages);
         mBanner.setAdapter(bannerAdapter);
+        mBanner.setOnTouchListener(new View.OnTouchListener(){
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                startActivity(PubActionActivity.getIntent(getActivity()));
+                return false;
+            }
+        });
         setBannerWD();
     }
 
@@ -135,7 +145,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mHotTravel.setAdapter(mTravelNoteAdapter);
         mRank = (ConstraintLayout) view.findViewById(R.id.rank);
         mStartActivity = (ConstraintLayout) view.findViewById(R.id.start_activity);
-
     }
 
     private void addDate(){

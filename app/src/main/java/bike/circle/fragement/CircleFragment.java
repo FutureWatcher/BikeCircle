@@ -3,6 +3,7 @@ package bike.circle.fragement;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import bike.circle.activities.MainActivity;
+import bike.circle.activities.MapActivity;
 import bike.circle.activities.MyActionActivity;
 import bike.circle.activities.MyTravelNoteActivity;
 import bike.circle.adapter.TravelNoteAdapter;
@@ -38,6 +41,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
 
     private Button mTravelNote;
     private Button mAction;
+
+    private FrameLayout mActionOne;
 
 
 
@@ -68,6 +73,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
     private void bindEvent() {
         mTravelNote.setOnClickListener(this);
         mAction.setOnClickListener(this);
+        mActionOne.setOnClickListener(this);
     }
 
     private void initView() {
@@ -93,6 +99,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
         setToolBar();
         mTravelNote = (Button) view.findViewById(R.id.travel_note);
         mAction = (Button) view.findViewById(R.id.action);
+        mActionOne = (FrameLayout) view.findViewById(R.id.action_one);
     }
 
 
@@ -108,7 +115,31 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.travel_note:getActivity().startActivity(MyTravelNoteActivity.getIntent(getActivity()));break;
             case R.id.action:getActivity().startActivity(MyActionActivity.getIntent(getActivity()));break;
+            case R.id.action_one:action();break;
         }
+    }
+
+    private void action(){
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_my_action_dialog,null);
+        TextView start = (TextView) view.findViewById(R.id.start);
+        TextView end = (TextView) view.findViewById(R.id.end);
+        start.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                startActivity(MapActivity.getIntent(getActivity()));
+            }
+        });
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(MapActivity.getIntent(getActivity()));
+            }
+        });
+
+        Button mJoin = (Button) view.findViewById(R.id.funciton_button);
+        mJoin.setText("加入");
+        new AlertDialog.Builder(getActivity()).setView(view).create().show();
     }
 
 }

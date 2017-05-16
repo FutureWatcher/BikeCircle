@@ -22,17 +22,17 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/portrait"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/travel_sample_portrait"
-        app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="1dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:src="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/guideline36"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline33"
-        app:layout_constraintRight_toLeftOf="@+id/guideline32"
-        app:layout_constraintTop_toTopOf="@+id/guideline36"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintLeft_toLeftOf="@+id/guideline42"
+        app:layout_constraintRight_toLeftOf="@+id/guideline42"
+        app:layout_constraintTop_toTopOf="@+id/guideline36" />
 
     <ImageView
         android:id="@+id/back"
@@ -43,7 +43,7 @@
         app:layout_constraintRight_toLeftOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="@+id/guideline39"
         app:layout_constraintVertical_bias="0.477"
-        app:srcCompat="@drawable/back"
+        app:srcCompat="@drawable/back_g"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline38"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.11" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
