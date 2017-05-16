@@ -67,7 +67,7 @@ public class ChatActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.friendinof:startActivity(FriendInfoActivity.getIntent(ChatActivity.this));
+            case R.id.friendinof:startActivity(FriendInfoActivity.getIntent(ChatActivity.this,false));
         }
         return true;
     }

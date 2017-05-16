@@ -29,11 +29,16 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
     private NestedScrollView nestedScrollView;
     private LinearLayout mAppbarGroup;
     private LinearLayout main;
+    private TextView mSeeMore;
+
+    private static final String HASBUTTON = "hasButton";
 
     private Button mSendMessage;
 
-    public static Intent getIntent(Context context){
-        return new Intent(context,FriendInfoActivity.class);
+    public static Intent getIntent(Context context , boolean i){
+        Intent intent = new Intent(context,FriendInfoActivity.class);
+        intent.putExtra("hasButton",i);
+        return intent;
     }
 
 
@@ -45,7 +50,6 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initView() {
         mSendMessage = (Button) findViewById(R.id.three_function_button);
-        mSendMessage.setText("发消息");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         appBarLayout = (AppBarLayout) findViewById(R.id.appbarlayout);
         mNikeName = (TextView) findViewById(R.id.nikename);
@@ -54,7 +58,15 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
         nestedScrollView = (NestedScrollView) findViewById(R.id.nes);
         mAppbarGroup = (LinearLayout) findViewById(R.id.appbar_group);
         main = (LinearLayout) findViewById(R.id.main);
+        mSeeMore = (TextView) findViewById(R.id.see_more);
         initActionBar();
+    }
+
+    private void initButton(){
+        if(getIntent().getExtras().getBoolean(HASBUTTON))
+            mSendMessage.setText("发消息");
+        else
+            mSendMessage.setVisibility(View.INVISIBLE);
     }
 
 
@@ -70,13 +82,15 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-
+                Boolean hasButton = getIntent().getExtras().getBoolean(HASBUTTON);
+                initButton();
                 if(lp == null){
                     lp = (FrameLayout.LayoutParams) main.getLayoutParams();
                     topMargin = lp.topMargin;
                 }
                 if (getSupportActionBar().getHeight() - appBarLayout.getHeight() == verticalOffset) {
                     mTitle.setText("好友信息");
+                    if(hasButton)
                     mSendMessage.setVisibility(View.INVISIBLE);
                     lp.topMargin = 0;
                     main.setLayoutParams(lp);
@@ -86,6 +100,7 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
                     lp.topMargin = topMargin;
                     main.setLayoutParams(lp);
                     mAppbarGroup.setVisibility(View.VISIBLE);
+                    if(hasButton)
                     mSendMessage.setVisibility(View.VISIBLE);
                 }
             }
@@ -95,6 +110,7 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void bindEvent() {
         mSendMessage.setOnClickListener(this);
+        mSeeMore.setOnClickListener(this);
     }
 
     @Override
@@ -111,6 +127,7 @@ public class FriendInfoActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.three_function_button:startActivity(ChatActivity.getIntent(FriendInfoActivity.this));break;
+            case R.id.see_more:startActivity(MyTravelNoteActivity.getIntent(FriendInfoActivity.this,"XXXX的动态",false));
         }
     }
 }

@@ -81,7 +81,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mFriendTravel = (RecyclerView) view.findViewById(R.id.firend_travel);
         mHotTravelNotes = new ArrayList<>();
-        mTravelNoteAdapter = new TravelNoteAdapter( mHotTravelNotes , LayoutInflater.from(getActivity()));
+        mTravelNoteAdapter = new TravelNoteAdapter( mHotTravelNotes , LayoutInflater.from(getActivity()) , getContext());
         mFriendTravel.setAdapter(mTravelNoteAdapter);
         mFriendTravel.setLayoutManager(mLinearLayoutManager);
         new StaticPool(getActivity()).getHotTravelNote(new NetResPool.PoolCallBack() {
@@ -113,7 +113,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.travel_note:getActivity().startActivity(MyTravelNoteActivity.getIntent(getActivity()));break;
+            case R.id.travel_note:getActivity().startActivity(MyTravelNoteActivity.getIntent(getActivity(),"我的动态",true));break;
             case R.id.action:getActivity().startActivity(MyActionActivity.getIntent(getActivity()));break;
             case R.id.action_one:action();break;
         }

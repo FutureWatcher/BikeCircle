@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
@@ -27,8 +28,12 @@ public class MainActivity extends BaseActivity implements FragmentTabHost.OnTabC
     private int mTabImage[] = { R.drawable.main_home_item,R.drawable.main_friend_item,R.drawable.main_circle_item };
     private String mTabTitle[] = { "首页", "圈友", "骑行圈" };
 
-    private TextView mMyRank;
-    private TextView mMyInfo;
+    private LinearLayout mMyRank;
+    private LinearLayout mMyInfo;
+    private LinearLayout mMyAction;
+    private LinearLayout mAboutUs;
+
+    private TextView mLogOut;
 
     public static Intent getIntent(Context context){
         return new Intent(context,MainActivity.class);
@@ -50,6 +55,7 @@ public class MainActivity extends BaseActivity implements FragmentTabHost.OnTabC
             mTabHost.addTab(tabSpec,mFragmentClass[i],null);
         }
         initSlidingMenu();
+
     }
 
     @Override
@@ -95,8 +101,11 @@ public class MainActivity extends BaseActivity implements FragmentTabHost.OnTabC
 
     private View setMenu(){
         View view = layoutInflater.inflate(R.layout.silder_menu,null);
-        mMyInfo = (TextView) view.findViewById(R.id.my_info);
-        mMyRank = (TextView) view.findViewById(R.id.my_rank);
+        mMyInfo = (LinearLayout) view.findViewById(R.id.my_info);
+        mMyRank = (LinearLayout) view.findViewById(R.id.my_rank);
+        mMyAction = (LinearLayout) view.findViewById(R.id.my_action);
+        mAboutUs=(LinearLayout) view.findViewById(R.id.about_us);
+        mLogOut = (TextView) view.findViewById(R.id.log_out);
         setMenuEvent();
         return view;
     }
@@ -104,6 +113,9 @@ public class MainActivity extends BaseActivity implements FragmentTabHost.OnTabC
     private void setMenuEvent(){
         mMyInfo.setOnClickListener(this);
         mMyRank.setOnClickListener(this);
+        mAboutUs.setOnClickListener(this);
+        mMyAction.setOnClickListener(this);
+        mLogOut.setOnClickListener(this);
     }
 
     private void updateTab(){
@@ -146,7 +158,10 @@ public class MainActivity extends BaseActivity implements FragmentTabHost.OnTabC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.my_info:startActivity(UserInfoActivity.getIntent(MainActivity.this));break;
-            case R.id.my_rank:;break;
+            case R.id.my_rank:startActivity(MyRankActivity.getIntent(MainActivity.this));break;
+            case R.id.my_action:startActivity(MyActionActivity.getIntent(MainActivity.this));break;
+            case R.id.about_us:startActivity(AboutUsActivity.getIntent(MainActivity.this));break;
+            case R.id.log_out:finish();break;
         }
     }
 }

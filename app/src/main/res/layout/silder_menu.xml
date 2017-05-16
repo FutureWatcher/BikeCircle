@@ -54,6 +54,7 @@
         android:background="@color/colorLine">
 
         <LinearLayout
+            android:id="@+id/my_info"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_column="0"
@@ -63,7 +64,6 @@
             android:background="@color/colorWhite">
 
             <TextView
-                android:id="@+id/my_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -76,6 +76,7 @@
 
 
         <LinearLayout
+            android:id="@+id/my_rank"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_column="0"
@@ -85,7 +86,6 @@
             android:background="@color/colorWhite">
 
             <TextView
-                android:id="@+id/my_rank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -97,6 +97,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/my_action"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_column="0"
@@ -117,6 +118,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/about_us"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_column="0"
@@ -136,13 +138,19 @@
         </LinearLayout>
     </GridLayout>
 
-    <TextView
-        android:id="@+id/textView12"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:gravity="bottom|left"
-        android:text="@string/log_out"
-        android:textColor="@color/colorPrimary"
-        android:textSize="14sp" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_margin="15dp"
+            android:text="@string/log_out"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+    </FrameLayout>
 </LinearLayout>

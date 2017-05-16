@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import bike.circle.app.R;
 
@@ -15,8 +16,16 @@ public class MyTravelNoteActivity extends BaseActivity implements View.OnClickLi
     private Button mWriteTravelNote;
     private FrameLayout frameLayout;
 
-    public static Intent getIntent(Context context){
-        return new Intent(context,MyTravelNoteActivity.class);
+    private TextView mTitle;
+
+    private static final String LOGINNAME = "nikeName";
+    private static final String HASBUTTON = "hasButton";
+
+    public static Intent getIntent(Context context,String nikeName,Boolean hasButton){
+        Intent intent = new Intent(context,MyTravelNoteActivity.class);
+        intent.putExtra(LOGINNAME,nikeName);
+        intent.putExtra(HASBUTTON,hasButton);
+        return intent;
     }
 
     @Override
@@ -26,8 +35,17 @@ public class MyTravelNoteActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void initView() {
+        setTitle();
         mWriteTravelNote = (Button) findViewById(R.id.wirte_travel_note);
+        if(!getIntent().getExtras().getBoolean(HASBUTTON))
+            mWriteTravelNote.setVisibility(View.INVISIBLE);
         frameLayout = (FrameLayout) findViewById(R.id.test);
+    }
+
+    private void setTitle(){
+        mTitle = (TextView) findViewById(R.id.title);
+        getIntent().getExtras().getString(LOGINNAME);
+        mTitle.setText(getIntent().getExtras().getString(LOGINNAME));
     }
 
     @Override

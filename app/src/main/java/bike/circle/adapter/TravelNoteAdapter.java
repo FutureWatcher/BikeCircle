@@ -1,5 +1,6 @@
 package bike.circle.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -17,15 +18,17 @@ public class TravelNoteAdapter extends RecyclerView.Adapter<TravelNoteViewHolder
     private List<TravelNoteZoom> travelNoteZooms ;
     private LayoutInflater layoutInflater;
 
+    private Context context;
 
-    public TravelNoteAdapter(List<TravelNoteZoom> travelNoteZooms ,LayoutInflater layoutInflater) {
+    public TravelNoteAdapter(List<TravelNoteZoom> travelNoteZooms ,LayoutInflater layoutInflater,Context context) {
         this.travelNoteZooms = travelNoteZooms;
         this.layoutInflater = layoutInflater;
+        this.context = context;
     }
 
     @Override
     public TravelNoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new TravelNoteViewHolder(layoutInflater.inflate(R.layout.travel_note,parent,false));
+        return new TravelNoteViewHolder(layoutInflater.inflate(R.layout.travel_note,parent,false),context);
     }
 
     @Override

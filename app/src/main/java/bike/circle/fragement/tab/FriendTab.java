@@ -52,7 +52,7 @@ public class FriendTab extends BaseTab {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.friend:startActivity(FriendInfoActivity.getIntent(getContext()));break;
+            case R.id.friend:startActivity(FriendInfoActivity.getIntent(getContext(),true));break;
             case R.id.new_friend:startActivity(NewFriendsActivity.getIntent(getContext()));break;
         }
     }

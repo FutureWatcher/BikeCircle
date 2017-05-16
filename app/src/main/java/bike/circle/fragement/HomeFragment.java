@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mHotTravelNotes = new ArrayList<>();
         bannerImages = new ArrayList<>();
-        mTravelNoteAdapter = new TravelNoteAdapter( mHotTravelNotes , LayoutInflater.from(getActivity()));
+        mTravelNoteAdapter = new TravelNoteAdapter( mHotTravelNotes , LayoutInflater.from(getActivity()),getContext());
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setToolBar();

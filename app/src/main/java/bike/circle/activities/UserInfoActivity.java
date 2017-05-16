@@ -31,6 +31,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     private NestedScrollView nestedScrollView;
     private LinearLayout mAppbarGroup;
     private LinearLayout main;
+    private TextView mSeeMore;
     public static Intent getIntent(Context context){
         return new Intent(context,UserInfoActivity.class);
     }
@@ -51,6 +52,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         nestedScrollView = (NestedScrollView) findViewById(R.id.nes);
         mAppbarGroup = (LinearLayout) findViewById(R.id.appbar_group);
         main = (LinearLayout) findViewById(R.id.main);
+        mSeeMore = (TextView) findViewById(R.id.see_more);
         initActionBar();
     }
 
@@ -91,6 +93,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void bindEvent() {
         mChange.setOnClickListener(this);
+        mSeeMore.setOnClickListener(this);
     }
 
     @Override
@@ -105,7 +108,8 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.three_function_button:startActivity(ChangeUserInfoActivity.getIntent(UserInfoActivity.this));
+            case R.id.three_function_button:startActivity(ChangeUserInfoActivity.getIntent(UserInfoActivity.this));break;
+            case R.id.see_more:startActivity(MyTravelNoteActivity.getIntent(UserInfoActivity.this,"我的动态",true));
         }
     }
 }
